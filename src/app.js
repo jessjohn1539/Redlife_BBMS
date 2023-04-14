@@ -92,13 +92,13 @@ app.get("/BBlogin", (req, res) => {
 });
 
 
-db.connect(function (err) {
-    if (err) {
-        console.error('Error connecting to SQL database: ' + err.stack);
-        return;
-    }
-    console.log('Connected to SQL database as ID ' + db.threadId);
-});
+// db.connect(function (err) {
+//     if (err) {
+//         console.error('Error connecting to SQL database: ' + err.stack);
+//         return;
+//     }
+//     console.log('Connected to SQL database as ID ' + db.threadId);
+// });
 app.post('/DonorRegistration', function (req, res) {
     const donorFname = req.body.donorFname;
     const donorGender = req.body.donorGender;
