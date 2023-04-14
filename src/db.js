@@ -5,12 +5,7 @@ const connection = mysql.createConnection({
     user: 'root',
     password: '@Ys2drrizfs',
 });
-process.on('SIGINT', () => {
-    connection.end(() => {
-      console.log('All connections closed');
-      process.exit(0);
-    });
-  });
+
 const createDatabase = () => {
     connection.query(`CREATE DATABASE IF NOT EXISTS BBMSRedlife`, (err, result) => {
         if (err) throw err;
