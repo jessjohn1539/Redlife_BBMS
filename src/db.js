@@ -107,7 +107,7 @@ const createDatabase = () => {
             // Add more table creation queries here
         });
     });
-    connection.query(sql, values, (err, results) => {
+    connection.query((err, results) => {
         // Release the connection back to the pool
         connection.release();
         if (err) {
