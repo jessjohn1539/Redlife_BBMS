@@ -1,10 +1,19 @@
 const mysql = require('mysql');
 
-const connection = mysql.createConnection({
+const connection = mysql.createPool({
+    connectionLimit: 10,
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD
-  });
+});
+
+connection.getConnection((err, connection) => {
+    if (err) {
+        console.error('Error connecting to SQL database:', err);
+        throw err;
+    }
+    console.log('Connected to SQL database');
+});
 
 const createDatabase = () => {
     connection.query(`CREATE DATABASE IF NOT EXISTS BBMSRedlife`, (err, result) => {
@@ -107,7 +116,7 @@ const createDatabase = () => {
             // Add more table creation queries here
         });
     });
-   
+
 };
 
 module.exports = connection;
