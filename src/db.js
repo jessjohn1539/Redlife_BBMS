@@ -107,14 +107,11 @@ const createDatabase = () => {
             // Add more table creation queries here
         });
     });
-    connection.query((err, results) => {
-        // Release the connection back to the pool
-        connection.release();
-        if (err) {
-          reject(err);
-          return;
-        }
-        resolve(results);
+    process.on('SIGINT', () => {
+        connection.end(() => {
+          console.log('All connections closed');
+          process.exit(0);
+        });
       });
 };
 
