@@ -7,7 +7,7 @@ const connection = mysql.createConnection({
 });
 
 const createDatabase = () => {
-    connection.query(`CREATE DATABASE IF NOT EXISTS BBRedlife`, (err, result) => {
+    connection.query(`CREATE DATABASE IF NOT EXISTS BBMSRedlife`, (err, result) => {
         if (err) throw err;
         console.log('BBRedlife database created successfully!');
         connection.query(`USE BBRedlife`, (err, result) => {
