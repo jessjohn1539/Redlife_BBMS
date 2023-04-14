@@ -107,6 +107,15 @@ const createDatabase = () => {
             // Add more table creation queries here
         });
     });
+    connection.query(sql, values, (err, results) => {
+        // Release the connection back to the pool
+        connection.release();
+        if (err) {
+          reject(err);
+          return;
+        }
+        resolve(results);
+      });
 };
 
 module.exports = connection;
