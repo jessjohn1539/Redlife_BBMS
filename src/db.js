@@ -116,8 +116,8 @@ const createDatabase = () => {
                 console.log('inventory table created successfully!');
             });
             // Add more table creation queries here
-        });
-    });
+//         });
+//     });
 
 };
 
