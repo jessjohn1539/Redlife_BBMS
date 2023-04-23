@@ -2,6 +2,7 @@ const mysql = require('mysql');
 
 const connection = mysql.createPool({
     connectionLimit: 10,
+    database: process.env.DATABASE,
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
@@ -17,12 +18,12 @@ connection.getConnection((err, connection) => {
 });
 
 const createDatabase = () => {
-    connection.query(`CREATE DATABASE IF NOT EXISTS BBMSRedlife`, (err, result) => {
-        if (err) throw err;
-        console.log('BBRedlife database created successfully!');
-        connection.query(`USE BBRedlife`, (err, result) => {
-            if (err) throw err;
-            console.log('Using BBRedlife database!');
+    // connection.query(`CREATE DATABASE IF NOT EXISTS BBMSRedlife`, (err, result) => {
+    //     if (err) throw err;
+    //     console.log('BBRedlife database created successfully!');
+    //     connection.query(`USE BBRedlife`, (err, result) => {
+    //         if (err) throw err;
+    //         console.log('Using BBRedlife database!');
             connection.query(`CREATE TABLE IF NOT EXISTS donor (
         donorFname varchar(30) not null,
         donorGender varchar(10) not null,
