@@ -173,7 +173,63 @@
     }
 }
 
-@media screen and (max-width:600px) {
+@media screen and (max-width: 600px) {
+
+    .chat-bar-collapsible {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 9999;
+    }
+
+    .chat-bar-collapsible .collapsible {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(to bottom right, #530404, #d82a2f);
+        box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+        border: none;
+        color: white;
+        font-size: 28px;
+        transition: all 0.2s ease-in-out;
+        cursor: pointer;
+        overflow: hidden;
+    }
+
+    .chat-bar-collapsible .collapsible:hover {
+        background-color: #3e8e41;
+        transform: scale(1.05);
+    }
+
+    .chat-bar-collapsible .content {
+        max-height: 0;
+        overflow-y: hidden;
+        background-color: #f1f1f1;
+        width: 90%;
+        margin: 0 auto;
+        border-radius: 5px;
+        position: fixed;
+        bottom: 80px;
+        right: 20px;
+        z-index: 9999;
+        box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+        transition: all 0.2s ease-in-out;
+    }
+
+    /* .chat-bar-collapsible .content.active {
+      max-height: 70vh;
+      overflow-y: auto;
+    } */
+    .chat-bar-collapsible .collapsible span {
+        display: none;
+    }
+}
+
+
+/* @media screen and (max-width:600px) {
     .full-chat-block {
         width: 100%;
         border-radius: 0px;
@@ -192,4 +248,4 @@
         border-top: 3px solid white;
         border-radius: 0px;
     }
-}
+} */

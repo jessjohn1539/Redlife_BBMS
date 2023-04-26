@@ -1,5 +1,12 @@
 // Collapsible
 var coll = document.getElementsByClassName("collapsible");
+const collapsible = document.querySelector('.chat-bar-collapsible .collapsible');
+const content = document.querySelector('.chat-bar-collapsible .content');
+
+collapsible.addEventListener('click', () => {
+  content.classList.toggle('active');
+});
+
 
 for (let i = 0; i < coll.length; i++) {
     coll[i].addEventListener("click", function () {
