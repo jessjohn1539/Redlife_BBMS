@@ -19,6 +19,26 @@
     border-bottom: none;
 }
 
+.text {
+    color: #000000;
+    font-family: Helvetica;
+    font-weight: normal;
+    font-size: 16px;
+    text-align: left;
+}
+
+.text span {
+    line-height: 1.5em;
+    display: inline-block;
+    background: #e0e0e0;
+    padding: 10px;
+    border-radius: 8px;
+    border-bottom-left-radius: 2px;
+    max-width: 80%;
+    margin-left: 10px;
+    animation: floatup .5s forwards
+}
+
 .content {
     max-height: 0;
     overflow: hidden;
@@ -122,7 +142,7 @@
 }
 
 .botText {
-    color: #000;
+    color: #000000;
     font-family: Helvetica;
     font-weight: normal;
     font-size: 16px;
@@ -146,6 +166,7 @@
         transform: translateY(14px);
         opacity: .0;
     }
+
     to {
         transform: translateY(0px);
         opacity: 1;
@@ -157,12 +178,14 @@
         width: 100%;
         border-radius: 0px;
     }
+
     .chat-bar-collapsible {
         position: fixed;
         bottom: 0;
         right: 0;
         width: 100%;
     }
+
     .collapsible {
         width: 100%;
         border: 0px;

@@ -1,6 +1,7 @@
- <body>
- <div class="chat-bar-collapsible">
-    <button id="chat-button" type="button" class="collapsible">FAQ's
+<body>
+  <!-- CHAT BAR BLOCK -->
+  <div class="chat-bar-collapsible">
+    <button id="chat-button" type="button" class="collapsible">FAQs
       <i id="chat-icon" style="color: #fff;" class="fa fa-fw fa-comments-o"></i>
     </button>
 
@@ -13,6 +14,10 @@
             <div id="chatbox">
               <h5 id="chat-timestamp"></h5>
               <p id="botStarterMessage" class="botText"><span>Loading...</span></p>
+              <p class="text"><span>Common FAQs:</span></p>
+              <p class="text"><span># how to donate blood<br># what are the requirements to donate blood?<br># how often can I donate blood?<br># what should I do before donating blood?<br># is it safe to donate blood?<br>#
+                can I donate blood if I have a medical condition?</span></p>
+
             </div>
 
             <!-- User input box -->
@@ -24,7 +29,7 @@
               </div>
 
               <div class="chat-bar-icons">
-                {{!-- <i id="chat-icon" style="color: crimson;" class="fa fa-fw fa-heart" onclick="heartButton()"></i> --}}
+                <i id="chat-icon" style="color: crimson;" class="fa fa-fw fa-heart" onclick="heartButton()"></i>
                 <i id="chat-icon" style="color: #333;" class="fa fa-fw fa-send" onclick="sendButton()"></i>
               </div>
             </div>
@@ -40,4 +45,5 @@
     </div>
 
   </div>
-  </body>
+
+</body>

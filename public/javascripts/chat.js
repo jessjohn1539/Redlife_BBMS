@@ -1,9 +1,3 @@
-// Press enter to send a message
-$("#textInput").keypress(function (e) {
-    if (e.which == 13) {
-        getResponse();
-    }
-});
 // Collapsible
 var coll = document.getElementsByClassName("collapsible");
 
@@ -41,7 +35,7 @@ function getTime() {
 
 // Gets the first message
 function firstBotMessage() {
-    let firstMessage = "How can I help you"
+    let firstMessage = "How's it going?"
     document.getElementById("botStarterMessage").innerHTML = '<p class="botText"><span>' + firstMessage + '</span></p>';
 
     let time = getTime();
@@ -66,7 +60,7 @@ function getResponse() {
     let userText = $("#textInput").val();
 
     if (userText == "") {
-        userText = "Hello";
+        userText = "I love Code Palace!";
     }
 
     let userHtml = '<p class="userText"><span>' + userText + '</span></p>';
@@ -103,3 +97,9 @@ function heartButton() {
     buttonSendText("Heart clicked!")
 }
 
+// Press enter to send a message
+$("#textInput").keypress(function (e) {
+    if (e.which == 13) {
+        getResponse();
+    }
+});
