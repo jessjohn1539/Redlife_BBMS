@@ -8,13 +8,18 @@ Donors can create an account, update their information, and view nearby blood ba
 
 ## Screenshots
 
-![Image 1](/Redlife images/1_terminal.png)
+![Image 1](/Redlife_images/1_terminal.png)
 *Terminal*
-
-![Image 2](https://example.com/image2.jpg)
-*Image 2: A cute puppy playing in the park.*
-
-![Image 3](https://example.com/image3.jpg)
-*Image 3: An abstract painting with vibrant colors.*
-
+![Image 2](/Redlife_images/2_home.png)
+*Home page*
+![Image 3](/Redlife_images/3_donorReg.png)
+*Donor Registration page*
+![Image 4](/Redlife_images/4_donorDB.png)
+*Donor database page*
+![Image 5](/Redlife_images/5_donorlogin.png)
+*Donor login page*
+![Image 6](/Redlife_images/6_donorHome_donorname_at_link.png)
+*Home page after Donor Registration *
+![Image 7](/Redlife_images/7_bloodavailability.png)
+*Donor Registration page*
 
