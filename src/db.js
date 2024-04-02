@@ -1,13 +1,25 @@
 const mysql = require('mysql2');
+// const mssql = require('mssql');
 require('dotenv').config();
+
 const connection = mysql.createPool({
     connectionLimit: 10,
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     port: process.env.DB_PORT,
-    database: 'BBMSRedlife'
+    database: process.env.DB_NAME,
+    authentication: {
+        type: 'default'
+    },
+    options: {
+        encrypt: true, // For Azure SQL Server security
+        trustServerCertificate: false,
+        enableArithAbort: true
+    }
 });
+
+console.log("Starting...");
 
 connection.getConnection((err, connection) => {
     if (err) {
@@ -18,42 +30,34 @@ connection.getConnection((err, connection) => {
 });
 
 const createDatabase = () => {
-    connection.query(`CREATE DATABASE IF NOT EXISTS BBMSRedlife`, (err, result) => {
-        if (err) throw err;
-        console.log('BBMSRedlife database created successfully!');
-        connection.query(`USE BBMSRedlife`, (err, result) => {
-            if (err) {
-                console.error('Error selecting BBMSRedlife database:', err);
-                throw err;
-            }
-            console.log('Using BBMSRedlife database!');
 
-            // Execute subsequent queries for creating tables
-            connection.query(`CREATE TABLE IF NOT EXISTS donor (
+
+    // Execute subsequent queries for creating tables
+    connection.query(`CREATE TABLE IF NOT EXISTS donor (
                 donorFname varchar(30) not null,
-        donorGender varchar(10) not null,
-        donorDob int not null,
-        donorMobile varchar(10) not null,
-        bloodgroup varchar(10) not null,
-        donorAddress varchar(200) not null,
-        stateCode varchar(20) not null,
-        donorPass varchar(15) not null,
-        Pincode int not null,
-        districtcode varchar(30) not null,
-        donorId char(36)
+                donorGender varchar(10) not null,
+                donorDob int not null,
+                donorMobile varchar(10) not null,
+                bloodgroup varchar(10) not null,
+                donorAddress varchar(200) not null,
+                stateCode varchar(20) not null,
+                donorPass varchar(15) not null,
+                Pincode int not null,
+                districtcode varchar(30) not null,
+                donorId char(36)
             );`, (err, result) => {
-                if (err) throw err;
-                console.log('donor table created successfully!');
-            });
-            connection.query(`CREATE TABLE IF NOT EXISTS donorpass (
+        if (err) throw err;
+        console.log('donor table created successfully!');
+    });
+    connection.query(`CREATE TABLE IF NOT EXISTS donorpass (
                 mobileNumber varchar(20), 
                 password varchar(20) 
               );`, (err, result) => {
-                if (err) throw err;
-                console.log('donorpass table created successfully!');
-            });
+        if (err) throw err;
+        console.log('donorpass table created successfully!');
+    });
 
-            connection.query(`CREATE TABLE IF NOT EXISTS blood_bank_info (
+    connection.query(`CREATE TABLE IF NOT EXISTS blood_bank_info (
                 stateCode varchar(20) not null,
                 districtcode varchar(20)  not null,
                 hospCity varchar(20)  not null,
@@ -79,50 +83,45 @@ const createDatabase = () => {
                 userName varchar(20)  not null,
                 password varchar(20) not null
               );`, (err, result) => {
-                if (err) throw err;
-                console.log('blood_bank_info table created successfully!');
-            });
+        if (err) throw err;
+        console.log('blood_bank_info table created successfully!');
+    });
 
-            connection.query(`CREATE TABLE IF NOT EXISTS donation_info (
+    connection.query(`CREATE TABLE IF NOT EXISTS donation_info (
                     donorType varchar(100) ,
                     donationType varchar(100) ,
                     componentType varchar(100) ,
                     bagType varchar(100) ,
                     ttiType varchar(100)
                   );`, (err, result) => {
-                if (err) throw err;
-                console.log('donation_info table created successfully!');
-            });
+        if (err) throw err;
+        console.log('donation_info table created successfully!');
+    });
 
-            connection.query(`CREATE TABLE IF NOT EXISTS bbpass (
+    connection.query(`CREATE TABLE IF NOT EXISTS bbpass (
                     userName varchar(20) not null ,
                     password varchar(20) not null
                   );`, (err, result) => {
-                if (err) throw err;
-                console.log('bbpass table created successfully!');
-            });
+        if (err) throw err;
+        console.log('bbpass table created successfully!');
+    });
 
-            connection.query(`CREATE TABLE IF NOT EXISTS login (
+    connection.query(`CREATE TABLE IF NOT EXISTS login (
                     mobileNumber varchar(10) not null,
                     password varchar(15) not null
                   );`, (err, result) => {
-                if (err) throw err;
-                console.log('login table created successfully!');
-            });
+        if (err) throw err;
+        console.log('login table created successfully!');
+    });
 
-            connection.query(`CREATE TABLE IF NOT EXISTS inventory (
+    connection.query(`CREATE TABLE IF NOT EXISTS inventory (
                     bloodBankId varchar(20) not null,
                     bloodType varchar(20) not null,
                     quantity varchar(20) not null,
                     expirationDate varchar(20) not null
                   );`, (err, result) => {
-                if (err) throw err;
-                console.log('inventory table created successfully!');
-            });
-
-            // Create other tables similarly
-
-        });
+        if (err) throw err;
+        console.log('inventory table created successfully!');
     });
 };
 
